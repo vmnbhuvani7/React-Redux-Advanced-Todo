@@ -4,7 +4,7 @@ import HomePage from './HomePage';
 import ManagerDetail from './ManagerDetail';
 
 const ManagerList = () => {
-    const { posts } = useSelector(state => state)
+    const { posts } = useSelector(state => state.manager)
 
     return (
         <div className="container">

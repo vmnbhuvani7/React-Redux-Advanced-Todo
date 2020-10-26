@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 
-import { addManager } from '../store/actions/managerAction';
+import { addEmployee } from '../store/actions/employeeAction';
 import HomePage from './HomePage';
-import ManagerList from './ManagerList';
 
-const AddManager = () => {
-    const [Manager, setManager] = useState({
-        id: Math.random().toString(36).substr(2, 9),
+const AddEmployee = () => {
+    const [Employee, setEmployee] = useState({
+        id: '',
         name: '',
         email: '',
         age: '',
@@ -18,24 +16,23 @@ const AddManager = () => {
     const dispatch = useDispatch();
 
     const changeHandler = (event) => {
-        setManager({
-            ...Manager,
+        setEmployee({
+            ...Employee,
             [event.target.name]: [event.target.value]
         })
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
-        dispatch(addManager(Manager))
-        setManager({
-            // id: Math.random().toString(36).substr(2, 9),
+        dispatch(addEmployee(Employee))
+        setEmployee({
+            id: Math.random().toString(36).substr(2, 9),
             name: '',
             email: '',
             age: '',
             type: '',
         })
     }
-    console.log(Manager);
     return (
         <div className="container" style={{ margin: "4rem auto" }}>
             <HomePage />
@@ -43,25 +40,25 @@ const AddManager = () => {
                 <form className="col s12" onSubmit={submitHandler}>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input type="text" name="name" className="validate" onChange={(e) => changeHandler(e)} value={Manager.name} />
+                            <input type="text" name="name" className="validate" onChange={(e) => changeHandler(e)} value={Employee.name} />
                             <label>First Name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input type="email" name="email" className="validate" onChange={(e) => changeHandler(e)} value={Manager.email} />
+                            <input type="email" name="email" className="validate" onChange={(e) => changeHandler(e)} value={Employee.email} />
                             <label>Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input type="number" name="age" className="validate" onChange={(e) => changeHandler(e)} value={Manager.age} />
+                            <input type="number" name="age" className="validate" onChange={(e) => changeHandler(e)} value={Employee.age} />
                             <label>Age</label>
                         </div>
                     </div>
                     <div className="row">
                         <label>Type Select</label>
-                        <select name="type" className="browser-default" onChange={changeHandler} value={Manager.type}>
+                        <select name="type" className="browser-default" onChange={changeHandler} value={Employee.type}>
                             <option value="" disabled>Choose your option ...</option>
                             <option value="Manager">Manager</option>
                             <option value="Employee">Employee</option>
@@ -86,12 +83,4 @@ const AddManager = () => {
 }
 
 
-// const mapStateToProps = state => {
-//     return {
-//         posts: state.ManagerReducer.posts
-//     }
-// }
-
-// export default connect(mapStateToProps)(AddManager)
-
-export default AddManager
+export default AddEmployee

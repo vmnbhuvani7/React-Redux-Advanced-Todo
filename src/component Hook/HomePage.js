@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
+
     return (
         <div className="container" style={{ margin: "4rem auto" }}>
             <div className="row">
@@ -10,7 +11,7 @@ const HomePage = () => {
                         Add </a>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a className="dropdown-item" >  <Link to="/addManager">Add Manager</Link></a>
-                        <a className="dropdown-item" ><Link to="/addManager">Add Employee</Link></a>
+                        <a className="dropdown-item" ><Link to="/addEmployee">Add Employee</Link></a>
                     </div>
                 </div>
                 <div className="dropdown show ">
@@ -18,9 +19,11 @@ const HomePage = () => {
                         View </a>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a className="dropdown-item" ><Link to="/postList">View Manager</Link></a>
-                        <a className="dropdown-item" ><Link to="/postList">View Employee</Link></a>
+                        <a className="dropdown-item" ><Link to="/employeeList">View Employee</Link></a>
                     </div>
                 </div>
+
+
             </div>
         </div>
     )

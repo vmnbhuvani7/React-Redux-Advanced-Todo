@@ -1,11 +1,6 @@
-import { combineReducers, createStore } from 'redux'
-import ManagerReducer from './reducers/ManagerReducer'
+import { createStore } from 'redux'
+import rootReducer from './rootReducer'
 
-const rootReducer = combineReducers({
-    ManagerReducer,
-})
 const store = createStore(rootReducer)
-// const store = createStore(ManagerReducer)
-console.log(store.getState())
 
 export default store
