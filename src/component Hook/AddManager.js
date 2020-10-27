@@ -20,22 +20,30 @@ const AddManager = () => {
     const changeHandler = (event) => {
         setManager({
             ...Manager,
-            [event.target.name]: [event.target.value]
+            [event.target.name]: event.target.value
         })
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
+        // localStorage.setItem('testObject',JSON.stringify(Manager))
         dispatch(addManager(Manager))
         setManager({
-            // id: Math.random().toString(36).substr(2, 9),
             name: '',
             email: '',
             age: '',
             type: '',
         })
     }
-    console.log(Manager);
+
+    const resetHandler = () => {
+        setManager({
+            name: '',
+            email: '',
+            age: '',
+            type: '',
+        })
+    }
     return (
         <div className="container" style={{ margin: "4rem auto" }}>
             <HomePage />
@@ -73,7 +81,7 @@ const AddManager = () => {
                                 Submit
                                 <i className="material-icons right">send</i>
                             </button>
-                            <button className="btn blue">
+                            <button className="btn blue" onClick={resetHandler}>
                                 Reset
                                 <i className="material-icons right">send</i>
                             </button>
